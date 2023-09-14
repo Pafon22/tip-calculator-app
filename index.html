@@ -6,28 +6,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- displays site properly based on user's device -->
 
-  <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <title>Frontend Mentor | Tip calculator app</title>
+  <link rel="stylesheet" href="https://fonts.google.com/specimen/Space+Mono">
+  <link rel="stylesheet" href="style.css">
+
   <script defer src="script.js"></script>
+  <title>Frontend Mentor | Tip calculator app</title>
 </head>
 
 <body>
   <header>
     <h1>
-      TIP CALCULATOR APP
+      <p>S P L I</p>
+      <p>T T E R</p>
     </h1>
   </header>
   <main>
-    <form id="geral" action="">
-      <section id="geral" class="container">
+    <section id="geral" class="container">
+      <form id="form-geral" class="row" action="">
         <section id="esquerda" class="container">
           <section id="bill" class="container">
             <label for="input-bill">Bill</label>
             <div class="input-group">
-              <span class="input-group-text">$</span>
+              <span class="input-group-text"><img src="images/icon-dollar.svg" alt="Ícone representando o dólar"></span>
               <input id="input-bill" class="form-control" type="number" aria-label="Total Value" placeholder="0.00">
             </div>
           </section>
@@ -39,38 +42,43 @@
               <button type="button" class="btn btn-info">15%</button>
               <button type="button" class="btn btn-info">25%</button>
               <button type="button" class="btn btn-info">50%</button>
-              <input id="input-tip-fee" type="number" class="btn btn-info" placeholder="Custom"></input>
+              <input id="input-tip-fee" type="number" class="form-control" placeholder="Custom"></input>
             </div>
           </section>
           <section id="people-number" class="container">
             <label for="input-people-number">Number of People</label>
             <div class="input-group">
-              <span class="input-group-text">$</span>
+              <span class="input-group-text"><img src="images/icon-person.svg"
+                  alt="Ícone representando uma pessoa"></span>
               <input id="input-people-number" class="form-control" type="number" aria-label="People Number"
                 placeholder="1">
             </div>
           </section>
         </section>
         <section id="direita" class="container">
-          <section id="tip-by-person">
-            <div class="form-floating">
-              <label for="input-tip-by-person">Tip Amount</label>
-              <input type="text" readonly class="form-control-plaintext" id="input-tip-by-person"
-                placeholder="/ person">
+          <section class="row">
+            <div class="container col mx-3 my-3">
+              <label for="input-tip-by-person" class="title-direita">Tip Amount</label>
+              <input type="text" readonly class="form-control-plaintext" id="input-tip-by-person" placeholder="/ person">
+            </div>
+            <div class="container col my-1">
+              <label id="label-tip-by-person" class="label-direita">$0.00</label>
             </div>
           </section>
-          <section id="total-by-person">
-            <div class="form-floating">
-              <label for="input-total-by-person">Total</label>
-              <input type="text" readonly class="form-control-plaintext" id="input-total-by-person"
-                placeholder="/ person">
+          <section class="row">
+            <div class="col mx-3 my-3">
+              <label for="input-total-by-person" class="title-direita">Total</label>
+              <input type="text" readonly class="form-control-plaintext" id="input-total-by-person" placeholder="/ person">
+            </div>
+            <div class="col my-1">
+              <label id="label-total-by-person" class="label-direita">$0.00</label>
             </div>
           </section>
           <section id="reset">
             <button id="button-reset" type="reset" class="btn btn-info">Reset</button>
           </section>
         </section>
-    </form>
+      </form>
     </section>
   </main>
   <footer>

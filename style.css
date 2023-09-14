@@ -1,8 +1,123 @@
+:root {
+	--very-dark-cyan: rgb(0, 73, 77);
+	--dark-gray-cyan: rgb(94, 122, 125);
+	--gray-cyan: rgb(127, 156, 159);
+	--light-gray-cyan: rgb(197, 228, 231);
+	--very-light-gray-cyan: rgb(244, 250, 250);
+}
+
 .attribution {
-  font-size: 11px;
-  text-align: center;
+	font-size: 11px;
+	text-align: center;
 }
 
 .attribution a {
-  color: hsl(228, 45%, 44%);
+	color: hsl(228, 45%, 44%);
 }
+
+body {
+	scroll-behavior: smooth;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background-color: rgb(197, 228, 231);
+	font-family: "Space Mono", monospace;
+	font-weight: 700;
+	color: var(--dark-gray-cyan);
+}
+
+header {
+  text-align: center;
+	margin: 5%;
+}
+
+#geral {
+  background-color: white;
+	border-radius: 20px;
+  padding: 3%;
+}
+
+#esquerda,
+#direita {
+  display: flex;
+	flex-flow: column wrap;
+	width: 50%;
+  padding: 1%;
+  border-radius: 20px;
+}
+
+section {
+	margin: 2%;
+}
+
+#button-group {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+button, #input-tip-fee {
+  font-size: 15px;
+  margin-bottom: 4px;
+  height: 40px;
+  flex-basis: 30%;
+}
+
+.btn {
+  background-color: var(--very-dark-cyan);
+  color: var(--very-light-gray-cyan);
+}
+
+.form-control {
+	background-color: var(--very-light-gray-cyan);
+	font-size: 24px;
+}
+
+#direita {
+  background-color: var(--very-dark-cyan);
+}
+
+
+.title-direita {
+  color: var(--very-light-gray-cyan);
+}
+
+.label-direita {
+  color: cyan;
+  font-size: 40px;
+}
+
+#button-reset {
+  margin-top: 5%;
+  width: 100%;
+}
+
+@media screen and (max-width: 375px){
+  body {
+    padding: 3%;
+  }
+
+  h1 {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  h1 > p {
+    margin-left: 12px;
+  }
+
+  #geral {
+    width: 90%;
+    margin: 0;
+    padding: 0;
+  }
+  #form-geral {
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+
+  #esquerda, #direita {
+    width: 80%;
+  }
+};
