@@ -31,7 +31,7 @@
             <label for="input-bill">Bill</label>
             <div class="input-group">
               <span class="input-group-text"><img src="images/icon-dollar.svg" alt="Ícone representando o dólar"></span>
-              <input id="input-bill" class="form-control" type="number" aria-label="Total Value" placeholder="0.00">
+              <input id="input-bill" class="form-control" type="number" aria-label="Total Value" placeholder="0.00" min="0">
             </div>
           </section>
           <section id="tip-fee" class="container">
@@ -42,7 +42,7 @@
               <button type="button" class="btn btn-info fee">15%</button>
               <button type="button" class="btn btn-info fee">25%</button>
               <button type="button" class="btn btn-info fee">50%</button>
-              <input id="input-tip-fee" type="number" class="form-control fee" placeholder="Custom"></input>
+              <input id="input-tip-fee" type="number" class="form-control fee" placeholder="Custom" min="0"></input>
             </div>
           </section>
           <section id="people-number" class="container">
@@ -51,7 +51,7 @@
               <span class="input-group-text"><img src="images/icon-person.svg"
                   alt="Ícone representando uma pessoa"></span>
               <input id="input-people-number" class="form-control" type="number" aria-label="People Number"
-                placeholder="1">
+                min="1" value="1">
             </div>
           </section>
         </section>
