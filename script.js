@@ -14,7 +14,7 @@ const estilizarSelecionado = (fees) => {
     custom.style.backgroundColor = 'white';
     custom.style.color = 'black';
   }
-}
+};
 
 const removerSelected = (fees) => {
   for (const fee of fees) {
@@ -53,7 +53,7 @@ const resetar = (event) => {
   removerSelected(fees);
   estilizarSelecionado(fees);
   calcular();
-}
+};
 
 const selecionar = (event) => {
   const target = event.target;
@@ -63,7 +63,7 @@ const selecionar = (event) => {
   target.classList.add('selected');
   estilizarSelecionado(fees);
   calcular();
-}
+};
 
 const verificarInput = (event) => {
   const target = event.target;
@@ -84,6 +84,6 @@ const paginaCarregada = () => {
   inputBill.addEventListener('input', verificarInput);
   inputPeople.addEventListener('input', verificarInput);
   inputCustom.addEventListener('input', verificarInput);
-}
+};
 
 window.addEventListener('load', paginaCarregada);
