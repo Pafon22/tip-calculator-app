@@ -26,47 +26,48 @@ body {
 	color: var(--dark-gray-cyan);
 }
 
-header {
-  text-align: center;
-	margin: 5%;
-}
-
-#geral {
-  background-color: white;
-	border-radius: 20px;
-  padding: 3%;
-}
-
-#esquerda,
-#direita {
-  display: flex;
-	flex-flow: column wrap;
-	width: 50%;
-  padding: 1%;
-  border-radius: 20px;
-}
-
 section {
 	margin: 2%;
 }
 
-#button-group {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  width: 100%;
+header {
+	text-align: center;
+	margin: 5%;
 }
 
-button, #input-tip-fee {
-  font-size: 15px;
-  margin-bottom: 4px;
-  height: 40px;
-  flex-basis: 30%;
+#geral {
+	background-color: white;
+	border-radius: 20px;
+	padding: 3%;
+}
+
+#esquerda,
+#direita {
+	display: flex;
+	flex-flow: column wrap;
+	width: 50%;
+	padding: 1%;
+	border-radius: 20px;
+}
+
+#button-group {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	width: 100%;
+}
+
+button,
+#input-tip-fee {
+	font-size: 15px;
+	margin-bottom: 4px;
+	height: 40px;
+	flex-basis: 30%;
 }
 
 .btn {
-  background-color: var(--very-dark-cyan);
-  color: var(--very-light-gray-cyan);
+	background-color: var(--very-dark-cyan);
+	color: var(--very-light-gray-cyan);
 }
 
 .form-control {
@@ -75,49 +76,65 @@ button, #input-tip-fee {
 }
 
 #direita {
-  background-color: var(--very-dark-cyan);
+	background-color: var(--very-dark-cyan);
 }
 
-
 .title-direita {
-  color: var(--very-light-gray-cyan);
+	color: var(--very-light-gray-cyan);
 }
 
 .label-direita {
-  color: cyan;
-  font-size: 40px;
+	color: cyan;
+	font-size: 40px;
 }
 
 #button-reset {
-  margin-top: 5%;
-  width: 100%;
+	margin-top: 5%;
+	width: 100%;
 }
 
-@media screen and (max-width: 375px){
-  body {
-    padding: 3%;
-  }
+footer {
+	display: flex;
+	justify-content: center;
+}
 
-  h1 {
-    display: flex;
-    flex-flow: row wrap;
-  }
-  h1 > p {
-    margin-left: 12px;
-  }
+@media screen and (max-width: 375px) {
+	body {
+		padding: 3%;
+	}
 
-  #geral {
-    width: 90%;
-    margin: 0;
-    padding: 0;
-  }
-  #form-geral {
-    flex-direction: column;
-    margin: 0;
-    padding: 0;
-  }
+	h1 {
+		display: flex;
+		flex-flow: row wrap;
+	}
 
-  #esquerda, #direita {
-    width: 80%;
-  }
-};
+	h1 > p {
+		margin-left: 12px;
+	}
+
+	#geral {
+		margin: 0;
+		padding: 0;
+	}
+
+	#form-geral {
+		flex-direction: column;
+	}
+
+	#esquerda,
+	#direita {
+		width: 90%;
+	}
+
+	#input-tip-fee {
+		flex-basis: 100%;
+	}
+
+	#reset {
+		margin-bottom: 5%;
+	}
+
+	main {
+		margin-bottom: 5%;
+	}
+}
