@@ -70,9 +70,15 @@ button,
 	color: var(--very-light-gray-cyan);
 }
 
+
 .form-control {
 	background-color: var(--very-light-gray-cyan);
 	font-size: 24px;
+}
+
+.selected {
+	background-color: cyan;
+	color: black;
 }
 
 #direita {
