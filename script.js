@@ -1,62 +1,72 @@
-const removerSelected = (fees) => {
-  for (const fee of fees) {
-    if (fee.classList.contains('selected')) fee.classList.remove('selected');
-  }
+const getElements = () => ({
+  fees: document.querySelectorAll('.fee'),
+  inputBill: document.querySelector('#input-bill'),
+  inputPeople: document.querySelector('#input-people-number'),
+  labelTipAmountByPerson: document.querySelector('#label-tip-by-person'),
+  labelTotalByPerson: document.querySelector('#label-total-by-person'),
+  btnReset: document.querySelector('#button-reset'),
+  inputCustom: document.querySelector('#input-tip-fee'),
+  feeGroup: document.querySelector('#button-group'),
+});
+
+const removeSelectedClass = (fees) => {
+  fees.forEach(fee => fee.classList.remove('selected'));
 };
 
-const calcular = () => {
-  const inputBill = document.getElementById('input-bill');
-  const inputPeople = document.getElementById('input-people-number');
-  const labelTipAmountByPerson = document.getElementById('label-tip-by-person');
-  const labelTotalByPerson = document.getElementById('label-total-by-person');
-  let selecionado = document.getElementsByClassName('selected');
-  if (selecionado.length === 0) selecionado = [document.getElementById('input-tip-fee')];
-  const tipAmount = selecionado[0].id === 'input-tip-fee'
-    ? Number(inputBill.value) * Number(selecionado[0].value) / 100
-    : Number(inputBill.value) * Number(selecionado[0].innerText.replace('%', '')) / 100;
-  const total = Number(inputBill.value) + Number(tipAmount);
-  const tipAmountByPerson = Number(tipAmount) / Number(inputPeople.value);
-  const totalByPerson = Number(total) / Number(inputPeople.value);
-  labelTipAmountByPerson.innerText = '$' + tipAmountByPerson.toFixed(2);
-  labelTotalByPerson.innerText = '$' + totalByPerson.toFixed(2);
+const getSelectedFee = (fees) => {
+  const selected = document.querySelector('.fee.selected') || document.querySelector('#input-tip-fee');
+  return selected.id === 'input-tip-fee' 
+    ? Number(selected.value) / 100 
+    : Number(selected.innerText.replace('%', '')) / 100;
 };
 
-const resetar = (event) => {
-  const fees = document.getElementsByClassName('fee');
-  const inputBill = document.getElementById('input-bill');
-  inputBill.value = 0
-  removerSelected(fees);
-  calcular();
+const calculateAmounts = () => {
+  const { inputBill, inputPeople, labelTipAmountByPerson, labelTotalByPerson, fees } = getElements();
+  const bill = parseFloat(inputBill.value) || 0;
+  const people = parseFloat(inputPeople.value) || 1;
+  const tipPercentage = getSelectedFee(fees);
+  
+  const tipAmount = bill * tipPercentage;
+  const totalAmount = bill + tipAmount;
+  
+  labelTipAmountByPerson.innerText = `$${(tipAmount / people).toFixed(2)}`;
+  labelTotalByPerson.innerText = `$${(totalAmount / people).toFixed(2)}`;
 };
 
-const selecionar = (event) => {
+const resetCalculator = () => {
+  const { inputBill, fees } = getElements();
+  inputBill.value = '0';
+  removeSelectedClass(fees);
+  calculateAmounts();
+};
+
+const handleFeeSelection = (event) => {
+  const { fees } = getElements();
   const target = event.target;
-  if (!target.classList.contains('fee')) { return; }
-  const fees = document.getElementsByClassName('fee');
-  removerSelected(fees);
+  
+  if (!target.classList.contains('fee')) return;
+  
+  removeSelectedClass(fees);
   target.classList.add('selected');
-  calcular();
+  calculateAmounts();
 };
 
-const verificarInput = (event) => {
+const handleInputChange = (event) => {
   const target = event.target;
-  if (target.value < target.min) {
+  if (parseFloat(target.value) < parseFloat(target.min)) {
     target.value = target.min;
   }
-  calcular();
+  calculateAmounts();
 };
 
-const paginaCarregada = () => {
-  const feeGroup = document.getElementById('button-group');
-  const btnReset = document.getElementById('button-reset');
-  const inputBill = document.getElementById('input-bill');
-  const inputPeople = document.getElementById('input-people-number');
-  const inputCustom = document.getElementById('input-tip-fee');
-  feeGroup.addEventListener('click', selecionar);
-  btnReset.addEventListener('click', resetar);
-  inputBill.addEventListener('input', verificarInput);
-  inputPeople.addEventListener('input', verificarInput);
-  inputCustom.addEventListener('input', verificarInput);
+const addEventListeners = () => {
+  const { feeGroup, btnReset, inputBill, inputPeople, inputCustom } = getElements();
+  
+  feeGroup.addEventListener('click', handleFeeSelection);
+  btnReset.addEventListener('click', resetCalculator);
+  [inputBill, inputPeople, inputCustom].forEach(input => 
+    input.addEventListener('input', handleInputChange)
+  );
 };
 
-window.addEventListener('load', paginaCarregada);
+window.addEventListener('load', () => addEventListeners());
