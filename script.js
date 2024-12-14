@@ -10,17 +10,10 @@ const calcular = () => {
   const labelTipAmountByPerson = document.getElementById('label-tip-by-person');
   const labelTotalByPerson = document.getElementById('label-total-by-person');
   let selecionado = document.getElementsByClassName('selected');
-  if (selecionado.length === 0) {
-    labelTipAmountByPerson.innerText = '$0.00';
-    labelTotalByPerson.innerText = '$0.00';
-    selecionado = [document.getElementById('input-tip-fee')];
-  }
-  let tipAmount;
-  if (selecionado[0].id === 'input-tip-fee') {
-    tipAmount = Number(inputBill.value) * Number(selecionado[0].value) / 100;
-  } else {
-    tipAmount = Number(inputBill.value) * Number(selecionado[0].innerText.replace('%', '')) / 100;
-  }
+  if (selecionado.length === 0) selecionado = [document.getElementById('input-tip-fee')];
+  const tipAmount = selecionado[0].id === 'input-tip-fee'
+    ? Number(inputBill.value) * Number(selecionado[0].value) / 100
+    : Number(inputBill.value) * Number(selecionado[0].innerText.replace('%', '')) / 100;
   const total = Number(inputBill.value) + Number(tipAmount);
   const tipAmountByPerson = Number(tipAmount) / Number(inputPeople.value);
   const totalByPerson = Number(total) / Number(inputPeople.value);
@@ -30,6 +23,8 @@ const calcular = () => {
 
 const resetar = (event) => {
   const fees = document.getElementsByClassName('fee');
+  const inputBill = document.getElementById('input-bill');
+  inputBill.value = 0
   removerSelected(fees);
   calcular();
 };
